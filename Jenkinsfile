@@ -1,19 +1,22 @@
 pipeline {
-    agent {
-        docker {
-            image 'composer:latest'
-            args '--privileged'
-        }
-    }
+    agent any
     stages {
         stage('Build') {
             steps {
-                sh 'composer install'
+                script {
+                    docker.image('composer:latest').inside('--privileged') {
+                        sh 'composer install'
+                    }
+                }
             }
         }
         stage('Test') {
             steps {
-                sh './vendor/bin/phpunit tests'
+                script {
+                    docker.image('composer:latest').inside('--privileged') {
+                        sh './vendor/bin/phpunit tests'
+                    }
+                }
             }
         }
     }
