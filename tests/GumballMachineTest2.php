@@ -6,7 +6,7 @@ class GumballMachineTest extends TestCase {
 
     public $gumballMachineInstance2;
 
-    public function setUp(): void {
+    public function setup(): void {
         $this->gumballMachineInstance2 = new GumballMachine();
     }
 
