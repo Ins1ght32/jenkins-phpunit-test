@@ -1,44 +1,43 @@
 <?php
-
 use PHPUnit\Framework\TestCase;
 require 'GumballMachine.php';
 
 class GumballMachineTest extends TestCase {
 
-    private $gumballMachine;
+    public $gumballMachineInstance2;
 
-    protected function setUp(): void {
-        $this->gumballMachine = new GumballMachine();
+    public function setUp(): void {
+        $this->gumballMachineInstance2 = new GumballMachine();
     }
 
     public function testInitialGumballs() {
-        $this->assertEquals(null, $this->gumballMachine->getGumballs(), "Initial gumballs should be null");
+        $this->assertEquals(null, $this->gumballMachineInstance2->getGumballs(), "Initial gumballs should be null");
     }
 
     public function testSetAndGetGumballs() {
-        $this->gumballMachine->setGumballs(10);
-        $this->assertEquals(10, $this->gumballMachine->getGumballs(), "Gumballs should be 10 after setting to 10");
+        $this->gumballMachineInstance2->setGumballs(10);
+        $this->assertEquals(10, $this->gumballMachineInstance2->getGumballs(), "Gumballs should be 10 after setting to 10");
 
-        $this->gumballMachine->setGumballs(5);
-        $this->assertEquals(5, $this->gumballMachine->getGumballs(), "Gumballs should be 5 after setting to 5");
+        $this->gumballMachineInstance2->setGumballs(5);
+        $this->assertEquals(5, $this->gumballMachineInstance2->getGumballs(), "Gumballs should be 5 after setting to 5");
     }
 
     public function testTurnWheel() {
-        $this->gumballMachine->setGumballs(10);
-        $this->gumballMachine->turnWheel();
-        $this->assertEquals(8, $this->gumballMachine->getGumballs(), "Gumballs should be 8 after turning wheel once");
+        $this->gumballMachineInstance2->setGumballs(10);
+        $this->gumballMachineInstance2->turnWheel();
+        $this->assertEquals(8, $this->gumballMachineInstance2->getGumballs(), "Gumballs should be 8 after turning wheel once");
 
-        $this->gumballMachine->turnWheel();
-        $this->assertEquals(6, $this->gumballMachine->getGumballs(), "Gumballs should be 6 after turning wheel twice");
+        $this->gumballMachineInstance2->turnWheel();
+        $this->assertEquals(6, $this->gumballMachineInstance2->getGumballs(), "Gumballs should be 6 after turning wheel twice");
     }
 
     public function testTurnWheelWithInsufficientGumballs() {
-        $this->gumballMachine->setGumballs(1);
-        $this->gumballMachine->turnWheel();
-        $this->assertEquals(-1, $this->gumballMachine->getGumballs(), "Gumballs should be -1 after turning wheel with 1 gumball");
+        $this->gumballMachineInstance2->setGumballs(1);
+        $this->gumballMachineInstance2->turnWheel();
+        $this->assertEquals(-1, $this->gumballMachineInstance2->getGumballs(), "Gumballs should be -1 after turning wheel with 1 gumball");
 
-        $this->gumballMachine->setGumballs(0);
-        $this->gumballMachine->turnWheel();
-        $this->assertEquals(-2, $this->gumballMachine->getGumballs(), "Gumballs should be -2 after turning wheel with 0 gumballs");
+        $this->gumballMachineInstance2->setGumballs(0);
+        $this->gumballMachineInstance2->turnWheel();
+        $this->assertEquals(-2, $this->gumballMachineInstance2->getGumballs(), "Gumballs should be -2 after turning wheel with 0 gumballs");
     }
 }
