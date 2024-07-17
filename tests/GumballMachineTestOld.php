@@ -2,7 +2,7 @@
 use PHPUnit\Framework\TestCase;
 require 'GumballMachine.php';
 
-class GumballMachineTest extends TestCase {
+class GumballMachineTest2 extends TestCase {
 
 	public $gumballMachineInstance;
 	
